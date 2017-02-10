@@ -5,16 +5,26 @@ public class AplicacionPatos {
     
             public static void main(String[] args){
                 
-        PatoEuropeo pc1=new PatoEuropeo();
-        PatoEuropeo pc2=new PatoEuropeo();
-        System.out.println(PatoEuropeo.color);
-        System.out.println(PatoCanadiense.color);
-        System.out.println(PatoMexicano.color);
-                pc1.comer();
-                pc1.volar();
-    }
-        
-        
+       
+                ComportamientoVolar patos[]=new ComportamientoVolar[5];
+                patos[0]=new PatoMexicano();
+                patos[1]=new PatoMexicano();
+                patos[2]=new PatoEuropeo();
+                patos[3]=new PatoEuropeo();
+                patos[4]=new PatoCanadiense();
+                
+                
+          
+                for(ComportamientoVolar p: patos){
+                
+                    p.volar();
+                    
+                
+                }
+                
+                
+                
+            }
     }
     
 
