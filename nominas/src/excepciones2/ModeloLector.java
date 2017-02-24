@@ -10,28 +10,22 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+/**
+ *
+ * 
+ */
 public class ModeloLector {
-    
-    public String leerArchivo(File file)throws FileNotFoundException, IOException{
-     String informacion ="nada" ;
-     
-     FileInputStream fis=new FileInputStream(file); 
-     StringBuilder builder=new StringBuilder();
-     int ch;
-     while((ch=fis.read()) !=-1){
-    
-        builder.append((char)ch);
-        
-    }
-     
-     informacion=builder.toString();
-        return informacion;
-        
-        
-        
-        
-    }
-    
+        public String leerArchivo(File file)throws FileNotFoundException, IOException{//trhows 
+            String informacion= "nada";
+           
+            FileInputStream fis=new FileInputStream(file);
+            StringBuilder builder=new StringBuilder(); //Sirve para construir strings que se van leyendo caracter por caracter 
+            int ch;
+            while((ch=fis.read())!=-1){ 
+                builder.append((char)ch); //append es agregar otro bloque para que se construya el archivo,casting para cambiar el tipo de dato
+            }
+            informacion=builder.toString();
+            return informacion;
+        }
     
 }

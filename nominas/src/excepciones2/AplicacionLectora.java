@@ -13,14 +13,14 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author Erick
+ 
  */
-public class AplicacionLectura extends javax.swing.JFrame {
+public class AplicacionLectora extends javax.swing.JFrame {
 
     /**
-     * Creates new form AplicacionLectura
+     * Creates new form AplicacionLectora
      */
-    public AplicacionLectura() {
+    public AplicacionLectora() {
         initComponents();
     }
 
@@ -58,43 +58,49 @@ public class AplicacionLectura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(135, 135, 135)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        JFileChooser selector=new JFileChooser();
+        try {
+            // TODO add your handling code here:
+            
+            JFileChooser selector=new JFileChooser();
             selector.showOpenDialog(this);
             
-        File file=selector.getSelectedFile();
-        ModeloLector modelo=new ModeloLector();
-        try {
-            textoResultado.setText( modelo.leerArchivo(file) );
+            File file= selector.getSelectedFile(); //get retorno
+            ValidacionArchivo.validarExtencion(file);
+            ModeloLector modelo= new ModeloLector();
+            textoResultado.setText(modelo.leerArchivo(file));;
         } catch (Exception ex) {
-            textoResultado.setText(ex.getMessage());
+           textoResultado.setText(ex.getMessage());
         }
-        
-        
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -114,20 +120,20 @@ public class AplicacionLectura extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AplicacionLectura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AplicacionLectora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AplicacionLectura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AplicacionLectora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AplicacionLectura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AplicacionLectora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AplicacionLectura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AplicacionLectora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AplicacionLectura().setVisible(true);
+                new AplicacionLectora().setVisible(true);
             }
         });
     }
